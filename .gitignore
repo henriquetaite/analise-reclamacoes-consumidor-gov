@@ -1,0 +1,32 @@
+# Dados brutos e bases grandes
+dados/brutos/*.csv
+dados/brutos/*.xlsx
+dados/brutos/*.xls
+dados/brutos/*.zip
+dados/brutos/*.rar
+
+# Dados tratados grandes
+dados/tratados/*.csv
+dados/tratados/*.xlsx
+dados/tratados/*.xls
+dados/tratados/*.parquet
+
+# Arquivos temporários do Excel
+~$*.xlsx
+~$*.xls
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Ambientes virtuais
+venv/
+.env/
+
+# Arquivos temporários do Power BI
+*.tmp
