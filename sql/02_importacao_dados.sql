@@ -1,6 +1,13 @@
 USE consumidor_gov;
 
-/* Os arquivos CSV são importados com CHARACTER SET utf8mb4 para preservar corretamente
+/* ATENÇÃO:
+Os caminhos dos arquivos CSV são absolutos e podem variar conforme o computador.
+Antes de executar este script, ajuste o diretório dos arquivos brutos conforme o ambiente local.
+
+Neste ambiente, os arquivos estão em:
+C:/Users/henri/Projetos/analise-reclamacoes-consumidor-gov/dados/brutos/
+
+Os arquivos CSV são importados com CHARACTER SET utf8mb4 para preservar corretamente
 caracteres acentuados em português, como "não", "avaliação" e "situação".
 
 Teste prévio com CHARACTER SET latin1 gerou caracteres quebrados, como "nÃ£o". */
@@ -24,7 +31,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 -- Importação Março
-LOAD DATA LOCAL INFILE 'C:/Users/henri/Projetos/analise-reclamacoes-consumidor-gov/dados/brutos/dadosgovbr---2025-Março.csv'
+LOAD DATA LOCAL INFILE 'C:/Users/henri/Projetos/analise-reclamacoes-consumidor-gov/dados/brutos/dadosgovbr---2025-Marco.csv'
 INTO TABLE reclamacoes_2025_bruto
 CHARACTER SET utf8mb4
 FIELDS TERMINATED BY ';'
