@@ -11,10 +11,10 @@ USE consumidor_gov;
 -- As conversões e padronizações serão feitas posteriormente em uma view ou tabela tratada. 
 -- =============================================================================================================
 
--- ===========================================================
+-- =============================================================================================================
 -- 01: TOTAL GERAL DE LINHAS IMPORTADAS
--- Valor encontrado: 2.944.621 linhas
--- ===========================================================
+-- -- Resultado validado após a importação dos 12 arquivos mensais de 2025: 2.599.689 linhas
+-- =============================================================================================================
 
 SELECT
     COUNT(*) AS total_linhas
@@ -43,7 +43,6 @@ SELECT
     END AS formato_data_finalizacao, 
     COUNT(*) AS total_linhas
 FROM reclamacoes_2025_bruto
-
 GROUP BY
     CASE
         WHEN DataFinalizacao LIKE '__/__/____' THEN 'dd/mm/aaaa'
@@ -92,5 +91,53 @@ SELECT
     COUNT(*) AS total_linhas
 FROM reclamacoes_2025_bruto
 GROUP BY Situacao
+ORDER BY total_linhas DESC;
+
+-- ================================================================
+-- 06: VALORES ÚNICOS DA COLUNA AvaliacaoReclamacao
+-- Objetivo: identificar os tipos de avaliação registrados na base
+-- ================================================================
+
+SELECT
+    AvaliacaoReclamacao,
+    COUNT(*) AS total_linhas
+FROM reclamacoes_2025_bruto
+GROUP BY AvaliacaoReclamacao
+ORDER BY total_linhas DESC;
+
+-- ===========================================================================
+-- 07: VALORES ÚNICOS DA COLUNA NotaDoConsumidor
+-- Objetivo: verificar a distribuição das notas atribuídas pelos consumidores
+-- ===========================================================================
+
+SELECT
+    NotaDoConsumidor,
+    COUNT(*) AS total_linhas
+FROM reclamacoes_2025_bruto
+GROUP BY NotaDoConsumidor
+ORDER BY NotaDoConsumidor;
+
+-- ================================================================================
+-- 08: VALORES ÚNICOS DA COLUNA Respondida
+-- Objetivo: identificar os registros marcados como respondidos ou não respondidos
+-- ================================================================================
+
+SELECT
+    Respondida,
+    COUNT(*) AS total_linhas
+FROM reclamacoes_2025_bruto
+GROUP BY Respondida
+ORDER BY total_linhas DESC;
+
+-- =========================================================================================
+-- 09: VALORES ÚNICOS DA COLUNA ProcurouEmpresa
+-- Objetivo: identificar se o consumidor procurou a empresa antes de registrar a reclamação
+-- =========================================================================================
+
+SELECT
+    ProcurouEmpresa,
+    COUNT(*) AS total_linhas
+FROM reclamacoes_2025_bruto
+GROUP BY ProcurouEmpresa
 ORDER BY total_linhas DESC;
 
